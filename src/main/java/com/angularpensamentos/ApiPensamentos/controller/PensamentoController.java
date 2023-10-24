@@ -17,10 +17,10 @@ public class PensamentoController {
     private PensamentoRepository repository;
 
     @PostMapping("/cadastrar")
-    public String cadastrar(@RequestBody  DadosCadastroPensamento dados){
+    public ResponseEntity cadastrar(@RequestBody  DadosCadastroPensamento dados){
         var pensamento = new Pensamento(dados);
         repository.save(pensamento);
-        return "salvo"+pensamento;
+        return ResponseEntity.ok().build();
     }
     @GetMapping("/listarpensamentos")
     public ResponseEntity<List<Pensamento>> listarPensamentos(){
